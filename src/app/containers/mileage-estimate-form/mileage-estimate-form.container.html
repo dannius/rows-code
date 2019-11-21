@@ -1,0 +1,4 @@
+<form [formGroup]="form" (submit)="submit()" class="input-group mb-3">
+  <input formControlName="estimate" type="number" class="form-control mr-3">
+  <button [disabled]="form.pristine || form.invalid" class="btn btn-primary">Update</button>
+</form>
