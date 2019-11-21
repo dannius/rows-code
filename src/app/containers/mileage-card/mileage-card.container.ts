@@ -11,17 +11,18 @@ import { IMileage } from '@lib/mileage';
 export class MileageCardContainer implements OnInit {
 
   public products: IMileage[];
+  public estimateValue = 40000;
 
   constructor(
     private _productSvc: ProductService,
   ) {}
 
   public ngOnInit() {
-    this.products = this._productSvc.products;
+    this.products = this._productSvc.products.sort((a, b) => a.mileage - b.mileage);
   }
 
-  public estimateChange(est: number) {
-    console.log(est);
+  public estimateChange(value: number) {
+    this.estimateValue = value;
   }
 
 }

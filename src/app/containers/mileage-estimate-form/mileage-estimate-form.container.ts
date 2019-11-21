@@ -1,17 +1,20 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mileage-estimate-form',
   templateUrl: './mileage-estimate-form.container.html',
   styleUrls: ['./mileage-estimate-form.container.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MileageEstimateFormContainer implements OnInit {
-
-  public form: FormGroup;
+  @Input()
+  public defaultEstimateValue: number;
 
   @Output()
   public update = new EventEmitter<number>();
+
+  public form: FormGroup;
 
   constructor(
     private _builder: FormBuilder,
@@ -32,7 +35,7 @@ export class MileageEstimateFormContainer implements OnInit {
 
   private initForm() {
     this.form = this._builder.group({
-      estimate: [40000, Validators.required],
+      estimate: [this.defaultEstimateValue, Validators.required],
     });
   }
 
