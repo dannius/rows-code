@@ -12,6 +12,7 @@ export class MileageCardContainer implements OnInit {
 
   public products: IMileage[];
   public estimateValue = 40000;
+  public perPage = 2;
 
   constructor(
     private _productSvc: ProductService,
@@ -23,6 +24,11 @@ export class MileageCardContainer implements OnInit {
 
   public estimateChange(value: number) {
     this.estimateValue = value;
+    this.perPage = 2;
+  }
+
+  public showMore() {
+    this.perPage += 2;
   }
 
 }

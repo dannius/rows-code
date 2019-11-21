@@ -1,1 +1,10 @@
-<app-mileage-card></app-mileage-card>
+<div class="d-flex mt-5">
+  <div class="card mr-5 mb-auto" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">default values (just for testing)</h5>
+      <app-product *ngFor="let product of productSvc.products" [product]="product"></app-product>
+    </div>
+  </div>
+
+  <app-mileage-card></app-mileage-card>
+</div>

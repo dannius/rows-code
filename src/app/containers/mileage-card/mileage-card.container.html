@@ -2,10 +2,15 @@
   <div class="card-body">
     <h5 class="card-title">Mileage (estimate)</h5>
 
-    <app-mileage-estimate-form [defaultEstimateValue]="defaultEstimateValue" (update)="estimateChange($event)"></app-mileage-estimate-form>
+    <app-mileage-estimate-form [defaultEstimateValue]="estimateValue" (update)="estimateChange($event)"></app-mileage-estimate-form>
 
-    <app-product *ngFor="let product of products" [product]="product"></app-product>
-
-    <button class="btn btn-primary btn-sm mt-3">show more</button>
+    <ng-container *ngIf="products | closestProducts:estimateValue:perPage as filteredProducts">
+      <app-product
+        *ngFor="let product of filteredProducts"
+        [product]="product">
+      </app-product>
+      
+      <button *ngIf="filteredProducts.length !== products.length" (click)="showMore()" class="btn btn-primary btn-sm mt-3">show more</button>
+    </ng-container>
   </div>
 </div>

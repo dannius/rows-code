@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { MileageCardContainer, MileageEstimateFormContainer } from './containers';
 import { ProductComponent } from './components';
+import { ClosestProductsPipe } from './pipes';
 
 const CONTAINERS = [
   MileageCardContainer,
@@ -16,6 +17,10 @@ const COMPONENTS = [
   ProductComponent,
 ];
 
+const PIPES = [
+  ClosestProductsPipe,
+];
+
 
 @NgModule({
   declarations: [
@@ -23,6 +28,7 @@ const COMPONENTS = [
 
     CONTAINERS,
     COMPONENTS,
+    PIPES,
   ],
   imports: [
     BrowserModule,
